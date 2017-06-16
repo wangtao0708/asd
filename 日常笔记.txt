@@ -1,0 +1,267 @@
+小程序  *选择器用 element 标识
+	需要用hhtp的都是hhtps
+	文本域  placeholder 有的会错位
+	input type=tel  安卓机打不开键盘
+	<image><image>标签
+	 mode="widthFix" 图片加上这个属性宽度不变，高度自动变化，保持原图宽高比不变
+	http://www.cnblogs.com/JinQing/p/6693907.html  表单提交获取值
+	hidden元素对块状布局才生效
+	input 结束必须有 /
+http://www.tuicool.com/articles/nq2ei2
+	<navigator url="../navigator/navigator?title=我是navigate"></navigator>
+	onLoad: function (options) {
+	  this.setData({
+       		orderState: options.title,
+   	  })
+	}https://www.fanjiangdz.com/weixin/newpublic
+
+	同一个微信用户，同一个小程序 storage 上限为 10MB。
+	注意： localStorage 是永久存储的，但是我们不建议将关键信息全部存在 localStorage，以防用户换设备的情况。
+	try {
+      		wx.setStorageSync('postId', postId)//存储
+    	} catch (e) {   
+      		console.log("存储失败") 
+    	}
+	try {
+  		var value = wx.getStorageSync('key')//取值
+  		if (value) {
+      		// Do something with return value
+  	}
+	} catch (e) {
+  		// Do something when catch error
+	}
+
+	自定义属性 <view class='showList '  bindtop='shopPost'   data-shopId='item.goods_id' ></view>  
+	js 接值    shopPost:function(event){   var postId = event.currentTarget.dataset.postid }
+
+	跳转  wx.navigateTo({
+      			url: '../category/category'
+    		})
+	
+	锚点 必须用scroll-view
+	 scroll-into-view="{{goEve}}" //goEve是变量 指的是那个元素 不能数字开头
+	scroll-with-animation="true"	//是否开启动画
+	
+	子元素浮动父元素没高度给个float:left;或者diaplsy:block;
+
+	 mode="widthFix"
+
+	返回
+	http://blog.csdn.net/angelaaa_/article/details/53217269
+
+
+	有tabBar的页面  在用js写跳转 跳转不了
+
+	@import "../footer/footer.wxss";  引入css
+
+
+	https://weappdev.com/t/wxparse-version0-2-html-markdown/326  字符串解析称标签
+
+	input有重影
+	微信官方设计文档给出了字体大小的规范，最小11pt，我自己设的是10pt，将其改成11pt之后，部分输入框不再出现重影，而是微		信官方渲染的加粗效果
+
+	安卓机 scroll-view  套 scroll-view  里边的会失效因为有display:flex;
+
+	wx.makePhoneCall({
+  phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+})
+
+
+http://www.jianshu.com/p/72f5c1e3f8a5  小程序支付地址
+
+
+
+sessionStorage 如果端口什么协议不一样的话会获取不到也删除不了
+
+父元素有translate  子元素position：fixed 会失效
+
+元素有缩放  别的元素有tanslate移动  重叠的时候会盖不住缩放的  
+
+页面阻止默认行为默认滚动条会失效
+
+ajax后台  如果是json串  ajax  jsonp跨域会报错
+
+查看本机IP ipconfig
+
+http://www.hudong67.com/article/99.html
+
+-webkit-tap-highlight-color:rgba(0, 0, 0, 0);  移动端A标签点击有背景
+
+http://www.fanjiangdz.com/products/category/ajaxselect?id=10&currPage=0
+
+
+iscroll有个问题就是：它会与swiper的轮播图冲突，只要轮播图滑动就会直接跳链接，解决的方案就是给swiper里面配置一个阻止touchmove冒泡事件的属性        touchMoveStopPropagation : false, 这样就能解决问题。
+
+onBeforeScrollStart: function (e) { 
+var target = e.target; 
+while (target.nodeType != 1) target = target.parentNode; 
+if (target.tagName != ‘SELECT’ && target.tagName != ‘INPUT’ && target.tagName != ‘TEXTAREA’) 
+e.preventDefault(); 
+}, 这段代码是解决iscroll  form不能输入
+
+
+预加载两张图片 真实图片不要给路径  要不然有时候第一次进来load方法不执行刷新不出来
+
+
+
+window.onpageshow=function(){	//和onload差不多  进入页面的时候
+	if(event.persisted){   //苹果上如果取缓存就执行true  否则false    但是安卓机一直false    所以直接判断的本地存储
+		
+	}
+}
+
+
+
+http://blog.csdn.net/dclove/article/details/43112839    javascript(js)小数精度丢失的解决方案
+
+function AccurateAdd(arg1, arg2) {
+    var r1, r2, m;
+    try { r1 = arg1.toString().split(".")[1].length } catch (e) { r1 = 0 }
+    try { r2 = arg2.toString().split(".")[1].length } catch (e) { r2 = 0 }
+    m = Math.pow(10, Math.max(r1, r2))
+    return (arg1 * m + arg2 * m) / m
+}
+function AccurateSubtract(arg1, arg2) {
+    return AccurateAdd(arg1, -arg2);
+}
+
+123258  13910726153  鲍秋旭微信登陆帐号密码
+
+http://www.chjtx.com/JRoll/  醉萝卜滑动网址
+
+
+
+使用swiper 父元素如果width是rem    li会重叠在一起
+
+
+微信端同样的px两个页面现实不一样  meta标签
+
+微信双击页面往上移动   meta标签
+
+https://github.com/aui/artDialog  github下载网址 弹出框插件
+
+异步AJAX  会造成GIF不动
+
+浏览器自带横向滚动  如果想子元素在一行  把父元素子元素都加上white-space: nowrap;  子元素display:inline-block; 不能给浮动
+
+ajax 因为有验证码 出现400  原因是：不能传过去字母  或者后台改成接收类型变成string
+
+iframe 在苹果上不能滑动
+
+npm install gulp -g	全局安装gulp
+gulpfile  		自己建
+gulp -v 		查看gulp版本号
+npm init 创建 package.json
+	 创建 node_module  下载插件的时候自己出来
+
+
+
+
+ionic  需要依赖node  -v 查看版本号
+
+	安装命令 $ npm install -g ionic			最新版
+		 $ npm install -g ionic@2.2   下载版本为2.2
+
+
+	删除	npm remove ionic -g  ||    npm uninstall ionic -g  
+
+
+	$ ionic start ionicdemo tabs  创建一个带tab的项目
+
+	ionic start 命令默认采用tabs template 做为初始化项目的模版，如果需要其他的模版，那么在项目名称后面添加对应的模版名称即可，如：
+	$ ionic start ionicdemo tutorial --v2
+
+
+
+	android studio  	http://www.android-studio.org/		是一个Android开发环境，基于IntelliJ IDEA. 类似 Eclipse ADT，Android Studio 提供了集成的 Android 开发工具用于开发和调试。
+
+	genymotion	 https://www.genymotion.com/download-trial/   模拟一个手机
+	
+
+
+	环境搭建的时候出现各种问题
+		1、翻墙  赛风    蓝灯据说有500M限制
+		2、安装python
+		3、node   版本 	V6.11.0
+		4、cordova   版本	V6.0.0
+		5、ionic   版本	V3.4.0
+		6、python   3.6.0
+		7、安装淘宝 npm install -g cnpm --registry=https://registry.npm.taobao.org   
+			   设置全局的npm从国内源加载：修改配置文件（安装的node路径下nodejsnode_modulesnpmnpmrc文件）npmrc，			   在文件的尾部添加配置registry=http://registry.cnpmjs.org
+
+		8、删除node_modules   npm install rimraf -g   rimraf node_modules
+		9、 添加平台The platform command has been renamed. To find out more, run:报错的话
+			用cordova platform add android
+		http://ionicframework.com/docs/ionicons/	ionic图标网址
+http://539go.com/index.php/archives/201607/253.html  环境搭建一览
+
+
+
+
+
+
+http://blog.csdn.net/qq_34447388/article/details/72377307
+http://jspang.com/2017/05/22/vuedemo/
+
+
+
+
+
+
+
+http://ionicframework.com/docs/ionicons/  ionic图标网址
+
+
+android ：（使用java作为语言）
+iOS：（使用object-c，或者swift作为语言）
+
+
+
+
+
+es5 是javascript 规范
+es6 是typescript 规范
+
+命令行下载typescript
+执行命令 tsc     *.ts    就能把es6代码转化成es5
+
+
+typescript 
+	1、多行字符串     
+		var a = "1"+
+			"2"+
+			"3";
+
+		var a = ` 
+				1221
+				1221
+			`
+	2、字符串模版
+		
+		var myname = "zhai liang";
+		var getName = function(){
+			return "zhai liang"
+		    }
+		不能用双引号要不然解析出来的都是字符串
+		console.log('hello ${myname}');		console.log('hello' + myname);	
+		console.log('hello ${getName()}');	console.log('hello' + getName());
+	
+
+	3、自动拆分字符串	
+		
+	
+	3、字符串声明类型
+		var alias:string = "abc";	比如alias声明了字符串类型下面如果alias=123就会出错
+		var alias:number = 123;
+		var alias:boolean = true;
+		function text( ) : void {	不需要返回值void的意思是
+			
+		}
+		function text( ) : string {	这样就不会报错
+			return "";
+		}
+
+		function text( name:string ) : string {	
+			return "";
+		}
+		text();	只能拿字符串去调用
